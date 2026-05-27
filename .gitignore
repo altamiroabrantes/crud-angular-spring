@@ -1,0 +1,23 @@
+# IDEs e arquivos do sistema
+.metadata/
+RemoteSystemsTempFiles/
+.project
+.classpath
+.settings/
+.vscode/
+*.iml
+.idea/
+
+# Angular / Node (Dentro da pasta do frontend)
+crud-angular/node_modules/
+crud-angular/.angular/
+crud-angular/dist/
+
+# Spring Boot / Java (Dentro da pasta do backend)
+crud-spring/target/
+crud-spring/.gradle/
+crud-spring/build/
+
+# Outros arquivos temporários
+*.log
+.DS_Store

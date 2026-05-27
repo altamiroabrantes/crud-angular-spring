@@ -1,8 +1,0 @@
-package com.loiane.crud_spring.model;
-
-public class Course {
-	
-	private Long _id;
-	private String name;
-	private String category;
-}
