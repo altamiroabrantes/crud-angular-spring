@@ -1,0 +1,5 @@
+package com.loiane.crud_spring.repository;
+
+public class CourseRepository {
+
+}

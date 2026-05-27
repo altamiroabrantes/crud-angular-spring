@@ -1,0 +1,5 @@
+package com.loiane.crud_spring.model;
+
+public class Course {
+
+}
