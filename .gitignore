@@ -1,5 +1,6 @@
 # IDEs e arquivos do sistema
 .metadata/
+metadata
 RemoteSystemsTempFiles/
 .project
 .classpath
