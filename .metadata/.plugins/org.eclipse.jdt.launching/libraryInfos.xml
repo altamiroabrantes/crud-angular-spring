@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-    <libraryInfo home="C:\Projetos\Java\jdk-17.0.7.7-hotspot" version="17.0.7"/>
-    <libraryInfo home="C:\Projetos\Poupex\spring-tool-suite-4-4.23.1\sts-4.23.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre" version="21.0.3"/>
-    <libraryInfo home="C:\Projetos\Poupex\spring-tool-suite-4-4.23.1\sts-4.23.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530" version="21.0.3">
-        <bootpath>
-            <entry path="null"/>
-        </bootpath>
-        <extensionDirs>
-            <entry path="null"/>
-        </extensionDirs>
-        <endorsedDirs>
-            <entry path="null"/>
-        </endorsedDirs>
-    </libraryInfo>
+    <libraryInfo home="C:\Projetos\Poupex\spring-tool-suite-4-4.19.0\sts-4.19.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502" version="17.0.7"/>
+    <libraryInfo home="C:\Projetos\Poupex\spring-tool-suite-4-4.19.0\sts-4.19.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.7.v20230425-1502\jre" version="17.0.7"/>
 </libraryInfos>
