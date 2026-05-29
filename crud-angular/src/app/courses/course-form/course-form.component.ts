@@ -13,7 +13,7 @@ export class CourseFormComponent implements OnInit {
 
   form: UntypedFormGroup;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
     private location: Location
