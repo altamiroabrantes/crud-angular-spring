@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class CourseFormComponent implements OnInit {
 
-  form: UntypedFormGroup;
+  form!: UntypedFormGroup;
 
   constructor(private formBuilder: UntypedFormBuilder,
     private service: CoursesService,
@@ -19,8 +19,8 @@ export class CourseFormComponent implements OnInit {
     private location: Location
   ) {
     this.form = this.formBuilder.group({
-      name: [null],
-      category: [null]
+      name: [''],
+      category: ['']
     });
    }
 
