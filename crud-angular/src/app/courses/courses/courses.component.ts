@@ -17,14 +17,12 @@ export class CoursesComponent implements OnInit {
 
   courses$: Observable<Course[]>;
 
-  displayedColumns = ['name', 'category', 'actions'];
-
   //coursesService: CoursesService;
 
   constructor(
     private coursesService: CoursesService,
     public dialog: MatDialog,
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute
   ) {
    // this.coursesService = new CoursesService();
