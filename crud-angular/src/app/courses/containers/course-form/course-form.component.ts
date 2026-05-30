@@ -3,6 +3,8 @@ import { FormBuilder, NonNullableFormBuilder, UntypedFormGroup, Validators } fro
 import { CoursesService } from '../../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Course } from '../../model/course';
 
 @Component({
   selector: 'app-course-form',
@@ -12,6 +14,7 @@ import { Location } from '@angular/common';
 export class CourseFormComponent implements OnInit {
 
   form = this.formBuilder.group({
+      _id: [''],
       name: ['', [Validators.required, Validators.minLength(3)]],
       category: ['',[Validators.required]]
     });
@@ -19,13 +22,23 @@ export class CourseFormComponent implements OnInit {
   constructor(private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {
    // this.form
 
    }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const course: Course = this.route.snapshot.data['course'];
+    if(course){
+      this.form.setValue({
+        _id: course._id,
+        name: course.name,
+        category: course.category
+      });
+    }
+   }
 
   onSubmit(){
     this.service.save(this.form.value)
@@ -40,6 +53,7 @@ export class CourseFormComponent implements OnInit {
     this.snackBar.open('Curso salvo com sucesso.','', { duration: 5000});
     this.onCancel();
   }
+
   private onError(){
     this.snackBar.open('Erro ao salvar curso.','', { duration: 5000});
   }
