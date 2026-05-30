@@ -25,7 +25,7 @@ export class CoursesService {
     return this.httpClient.get<Course>(`${this.API}/${id}`).pipe(first());
   }
 
-  save(record: Partial<Course>): Observable<Course> {
+   save(record: Partial<Course>): Observable<Course> {
     if (record._id) {
       return this.update(record);
     }
