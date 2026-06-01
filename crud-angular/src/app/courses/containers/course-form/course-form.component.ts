@@ -15,7 +15,7 @@ export class CourseFormComponent implements OnInit {
 
   form = this.formBuilder.group({
       _id: [''],
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       category: ['',[Validators.required]]
     });
 
@@ -56,5 +56,25 @@ export class CourseFormComponent implements OnInit {
 
   private onError(){
     this.snackBar.open('Erro ao salvar curso.','', { duration: 2000});
+  }
+
+  getErrorMessage(fieldName: string) {
+    const field = this.form.get(fieldName);
+
+    if (field?.hasError('required')) {
+      return 'Campo obrigatório';
+    }
+
+    if (field?.hasError('minlength')) {
+      const requiredLength = field.getError('minlength').requiredLength;
+      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres`;
+    }
+
+    if (field?.hasError('maxlength')) {
+      const requiredLength = field.getError('maxlength').requiredLength;
+      return `Tamanho máximo excedido de ${requiredLength} caracteres`;
+    }
+
+    return '';
   }
 }
