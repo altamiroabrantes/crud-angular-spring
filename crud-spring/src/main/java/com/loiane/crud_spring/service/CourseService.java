@@ -1,16 +1,15 @@
 package com.loiane.crud_spring.service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import com.loiane.crud_spring.dto.CourseDTO;
+import com.loiane.crud_spring.dto.mapper.CourseMapper;
 import com.loiane.crud_spring.exception.RecordNotFoundException;
-import com.loiane.crud_spring.model.Course;
 import com.loiane.crud_spring.repository.CourseRepository;
 
 import jakarta.validation.Valid;
@@ -24,24 +23,31 @@ import lombok.AllArgsConstructor;
 public class CourseService {
 
 	private final CourseRepository courseRepository;
+	private final CourseMapper mapper ;
 
-	public List<Course> list() {
-		return courseRepository.findAll();
+	public List<CourseDTO> list() {
+		return courseRepository.findAll()
+				.stream()
+				//.map(course -> mapper.toDTO(course))
+				.map(mapper::toDTO)
+				.collect(Collectors.toList());
 	}
 
-	public Course findById(@NotNull @Positive Long id) {
-		return courseRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+	public CourseDTO findById(@NotNull @Positive Long id) {
+		return courseRepository.findById(id)
+				.map(mapper::toDTO)
+				.orElseThrow(() -> new RecordNotFoundException(id));
 	}
 
-	public Course create(@Valid Course course) {
-		return courseRepository.save(course);
+	public CourseDTO create(@Valid @NotNull CourseDTO course) {
+		return mapper.toDTO(courseRepository.save(mapper.toEntity(course)));
 	}
 
-	public Course update(@NotNull @Positive Long id, @Valid Course course) {
+	public CourseDTO update(@NotNull @Positive Long id, @Valid @NotNull CourseDTO course) {
 		return courseRepository.findById(id).map(recordFound -> {
-			recordFound.setName(course.getName());
-			recordFound.setCategory(course.getCategory());
-			return courseRepository.save(recordFound);
+			recordFound.setName(course.name());
+			recordFound.setCategory(course.category());
+			return mapper.toDTO(courseRepository.save(recordFound));
 		}).orElseThrow(() -> new RecordNotFoundException(id));
 	}
 	
