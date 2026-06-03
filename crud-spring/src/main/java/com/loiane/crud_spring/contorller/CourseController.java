@@ -3,7 +3,6 @@ package com.loiane.crud_spring.contorller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.loiane.crud_spring.dto.CourseDTO;
 import com.loiane.crud_spring.model.Course;
-import com.loiane.crud_spring.repository.CourseRepository;
 import com.loiane.crud_spring.service.CourseService;
 
 import jakarta.validation.Valid;
