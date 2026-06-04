@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.loiane.crud_spring.dto.CourseDTO;
 import com.loiane.crud_spring.dto.mapper.CourseMapper;
+import com.loiane.crud_spring.enums.CategoryEnum;
 import com.loiane.crud_spring.exception.RecordNotFoundException;
 import com.loiane.crud_spring.repository.CourseRepository;
 
@@ -46,12 +47,12 @@ public class CourseService {
 	public CourseDTO update(@NotNull @Positive Long id, @Valid @NotNull CourseDTO course) {
 		return courseRepository.findById(id).map(recordFound -> {
 			recordFound.setName(course.name());
-			recordFound.setCategory(course.category());
+			recordFound.setCategory(CategoryEnum.valueOf(course.category()));
 			return mapper.toDTO(courseRepository.save(recordFound));
 		}).orElseThrow(() -> new RecordNotFoundException(id));
 	}
 	
-	public void delete(@NotNull @Positive @PathVariable("id") Long id) {
+	public void delete(@NotNull @Positive Long id) {
 		courseRepository.delete(
 				courseRepository.findById(id)
 				.orElseThrow(() -> new RecordNotFoundException(id)));
