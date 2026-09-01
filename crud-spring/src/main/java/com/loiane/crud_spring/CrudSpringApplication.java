@@ -1,5 +1,6 @@
 package com.loiane.crud_spring;
 
+import com.loiane.crud_spring.model.Lesson;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,14 @@ public class CrudSpringApplication {
 			courseRepository.deleteAll();
 			Course c = new Course();
 			c.setName("Angular com Spring");
-			c.setCategory(CategoryEnum.FRONT_END);
+			c.setCategory(CategoryEnum.BACK_END);
+
+			Lesson l = new Lesson();
+			l.setCourse(c);
+			l.setName("Introducao");
+			l.setYoutubeUrl("watch?v=1");
+			c.getLessons().add(l);
+
 			courseRepository.save(c);
 		};
 	}
